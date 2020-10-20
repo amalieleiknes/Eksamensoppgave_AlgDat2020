@@ -1,10 +1,7 @@
 package no.oslomet.cs.algdat.Eksamen;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class EksamenSBinTre<T> {
     private static final class Node<T>   // en indre nodeklasse
@@ -85,29 +82,90 @@ public class EksamenSBinTre<T> {
 
 
 
-
-
     /** Oppgave 1
-     * Metode som legger inn en ny node tatt fra kompendiet,
+     * Metode som legger inn en ny node er tatt fra kompendiet (5.2.3 a),
      * korrigert så den gir riktig verdi i foreldrenode
      * @param verdi Verdien som skal legges inn
      * @return Returnerer true om veriden ble lagt inn, false hvis ikke
      */
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
+
+        Node<T> p = rot;
+        Node<T> q = null;           // hjelpevariabel som viser hvor vi kan putte p
+        Node<T> left = null;
+        Node<T> right = null;
+        Node<T> parent = null;
+
+        int cmp = 0;                             // hjelpevariabel
+
+        while (p != null)       // fortsetter til p er ute av treet (ledig plass)
+        {
+            q = p;                                 // q er forelder til p
+            cmp = comp.compare(verdi,p.verdi);     // bruker komparatoren
+            p = cmp < 0 ? p.venstre : p.høyre;     // flytter p (hvis comp er større enn 0 -> settes verdien inn på venstre side fordi p er mindre enn
+        }
+
+        // p er nå null, dvs. ute av treet, q er den siste vi passerte
+
+        p = new Node<T>(verdi, left, right, parent);                   // oppretter en ny node
+
+        if (q == null) rot = p;                  // p blir rotnode
+        else if (cmp < 0) q.venstre = p;         // venstre barn til q
+        else q.høyre = p;                        // høyre barn til q
+
+        antall++;                                // én verdi mer i treet
+        return true;                             // vellykket innlegging
     }
 
 
+    // TODO
     /** Oppgave 6 - del 1
      * Tatt fra kompendiet - korrigert så den fungerer i min kode
      * @param verdi Verdien som skal fjernes
      * @return Returnerer true om den blir fjernet
      */
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (verdi == null) return false;  // treet har ingen nullverdier
+
+        Node<T> p = rot, q = null;   // q skal være forelder til p
+
+        while (p != null)            // leter etter verdi
+        {
+            int cmp = comp.compare(verdi,p.verdi);      // sammenligner
+            if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
+            else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
+            else break;    // den søkte verdien ligger i p
+        }
+        if (p == null) return false;   // finner ikke verdi
+
+        if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
+        {
+            Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
+            if (p == rot) rot = b;
+            else if (p == q.venstre) q.venstre = b;
+            else q.høyre = b;
+        }
+        else  // Tilfelle 3)
+        {
+            Node<T> s = p, r = p.høyre;   // finner neste i inorden
+            while (r.venstre != null)
+            {
+                s = r;    // s er forelder til r
+                r = r.venstre;
+            }
+
+            p.verdi = r.verdi;   // kopierer verdien i r til p
+
+            if (s != p) s.venstre = r.høyre;
+            else s.høyre = r.høyre;
+        }
+
+        antall--;   // det er nå én node mindre i treet
+        return true;
     }
 
-
+    // TODO
     /** Oppgave 6 - del 2
      *
      * @param verdi Tar inn verdi som skal fjernes i alle noder
@@ -118,15 +176,52 @@ public class EksamenSBinTre<T> {
     }
 
 
+    // TODO
     /** Oppgave 2
      * @param verdi Verdien vi ska sjekke antall forekomster av
      * @return Returnerer antallet av verdien
      */
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        if(verdi == null){
+            return 0;       //treet har ingen verdier
+        }
+
+        Node<T> p = rot;            // hjelpepeker
+        int antallAvVerdi = 0;
+
+        while (p != null){                           // sjekker p
+
+            int cmp = comp.compare(verdi, p.verdi);     // hvis verdi>p.verdi returneres positivt tall
+
+            if(cmp < 0){        //rotnodes verdi er større enn verdien vi leter etter
+                p = p.høyre;
+
+            }
+
+            if(cmp > 0){        // rotnodes verdi er mindre enn verdien vi leter etter
+                p = p.venstre;
+
+            }
+
+            if (cmp == 0) {
+                antallAvVerdi++;
+                p = p.høyre;        // TODO: går til høyre fordi om verdien finnes, er den alltid til venstre?
+            }
+
+
+
+
+        }
+
+
+
+
+
+        return antallAvVerdi;
     }
 
-
+    // TODO
     /** Oppgave 6 - del 3
      * Skal traversere (rekursivt eller iterativt treet i en rekkefølge og
      * sørge for at pekere og nodeverdier blir nullet ut.
@@ -135,7 +230,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-
+    // TODO
     /** Oppgave 3 - del 1
      *
      * @param p
@@ -146,7 +241,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-
+    // TODO
     /** Oppgave 3 - del 2
      *
      * @param p
@@ -157,7 +252,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-
+    // TODO
     /** Oppgave 4 - hjelpemetode del 1
      *
      * @param oppgave
@@ -170,6 +265,7 @@ public class EksamenSBinTre<T> {
         postordenRecursive(rot, oppgave);
     }
 
+    // TODO
     /** Oppgave 4 - hjelpemetode del 2
      *
      * @param p
@@ -179,6 +275,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+    // TODO
     /** Oppgave 5 - del 1
      *
      * @return
@@ -187,6 +284,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+    // TODO
     /** Oppgave 5 - del 2
      *
      * @param data
