@@ -83,34 +83,85 @@ public class EksamenSBinTre<T> {
         return antall == 0;
     }
 
+
+
+
+
+    /** Oppgave 1
+     * Metode som legger inn en ny node tatt fra kompendiet,
+     * korrigert så den gir riktig verdi i foreldrenode
+     * @param verdi Verdien som skal legges inn
+     * @return Returnerer true om veriden ble lagt inn, false hvis ikke
+     */
     public boolean leggInn(T verdi) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 6 - del 1
+     * Tatt fra kompendiet - korrigert så den fungerer i min kode
+     * @param verdi Verdien som skal fjernes
+     * @return Returnerer true om den blir fjernet
+     */
     public boolean fjern(T verdi) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 6 - del 2
+     *
+     * @param verdi Tar inn verdi som skal fjernes i alle noder
+     * @return Returnerer hvor mange noder som er fjernet
+     */
     public int fjernAlle(T verdi) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 2
+     * @param verdi Verdien vi ska sjekke antall forekomster av
+     * @return Returnerer antallet av verdien
+     */
     public int antall(T verdi) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 6 - del 3
+     * Skal traversere (rekursivt eller iterativt treet i en rekkefølge og
+     * sørge for at pekere og nodeverdier blir nullet ut.
+     */
     public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 3 - del 1
+     *
+     * @param p
+     * @param <T>
+     * @return
+     */
     private static <T> Node<T> førstePostorden(Node<T> p) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 3 - del 2
+     *
+     * @param p
+     * @param <T>
+     * @return
+     */
     private static <T> Node<T> nestePostorden(Node<T> p) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+
+    /** Oppgave 4 - hjelpemetode del 1
+     *
+     * @param oppgave
+     */
     public void postorden(Oppgave<? super T> oppgave) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
@@ -119,14 +170,30 @@ public class EksamenSBinTre<T> {
         postordenRecursive(rot, oppgave);
     }
 
+    /** Oppgave 4 - hjelpemetode del 2
+     *
+     * @param p
+     * @param oppgave
+     */
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+    /** Oppgave 5 - del 1
+     *
+     * @return
+     */
     public ArrayList<T> serialize() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
+    /** Oppgave 5 - del 2
+     *
+     * @param data
+     * @param c
+     * @param <K>
+     * @return
+     */
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
