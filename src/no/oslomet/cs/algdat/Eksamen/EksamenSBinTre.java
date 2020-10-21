@@ -70,6 +70,7 @@ public class EksamenSBinTre<T> {
         Node<T> p = førstePostorden(rot); // går til den første i postorden
         while (p != null) {
             s.add(p.verdi.toString());
+
             p = nestePostorden(p);
         }
 
@@ -92,31 +93,38 @@ public class EksamenSBinTre<T> {
         Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
 
         Node<T> p = rot;
-        Node<T> q = null;           // hjelpevariabel som viser hvor vi kan putte p
-        Node<T> left = null;
-        Node<T> right = null;
-        Node<T> parent = null;
+        Node<T> forelder = null;           // hjelpevariabel som viser forelder til p
 
         int cmp = 0;                             // hjelpevariabel
 
-        while (p != null)       // fortsetter til p er ute av treet (ledig plass)
-        {
-            q = p;                                 // q er forelder til p
-            cmp = comp.compare(verdi,p.verdi);     // bruker komparatoren
-            p = cmp < 0 ? p.venstre : p.høyre;     // flytter p (hvis comp er større enn 0 -> settes verdien inn på venstre side fordi p er mindre enn
+        while (p != null){                      // så lenge p ikke er null skal comp sjekke verdi mot verdi
+            forelder = p;
+            cmp = comp.compare(verdi,p.verdi);  // returnerer positivt tall hvis verdi er større enn p.verdi
+
+            if(cmp<0){                          // p.verdi er størst, vi går mot venstre
+                p = p.venstre;                  // p flyttes ned til venstre for å sjekkes ytterligere
+            }
+            else{
+                p = p.høyre;
+            }
         }
 
-        // p er nå null, dvs. ute av treet, q er den siste vi passerte
+        // p er nå null, dvs. ute av treet, forelder er den siste vi passerte
+        p = new Node<T>(verdi, forelder); // oppretter en ny node
 
-        p = new Node<T>(verdi, left, right, parent);                   // oppretter en ny node
+        if (forelder == null) {
+            rot = p;                      // p blir rotnode
+        }
+        else if (cmp < 0) {
+            forelder.venstre = p;         // venstre barn til forelder
+        }
+        else {
+            forelder.høyre = p;           // høyre barn til forelder
+        }
 
-        if (q == null) rot = p;                  // p blir rotnode
-        else if (cmp < 0) q.venstre = p;         // venstre barn til q
-        else q.høyre = p;                        // høyre barn til q
-
-        antall++;                                // én verdi mer i treet
-        endringer++;                             // har endret treet
-        return true;                             // vellykket innlegging
+        antall++;                         // én verdi mer i treet
+        endringer++;                      // har endret treet
+        return true;                      // vellykket innlegging
     }
 
 
@@ -228,10 +236,29 @@ public class EksamenSBinTre<T> {
      * @return Returnerer første node i post orden med p som rot
      */
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        if(p == null){
-            return null;
+        Node<T> første = p;      // starter med neste i rotnoden
+
+        // starter med å sjekke om noden er alene
+        if(første.venstre == null && første.høyre==null && første.forelder == null){
+            return p;
         }
-        return p.venstre;
+
+        // fortsetter med å sjekke om foreldren har barn, ellers er forelder neste så lenge den ikke har andre barn
+        else if(første.venstre == null && første.høyre == null && første.forelder.høyre == null){
+            første = første.forelder;
+        }
+
+
+        // sjekker om søsken har barn, og da skal alle til venstre sjekkes først
+        while(første.venstre != null || første.høyre != null) {
+            while (første.venstre != null) {
+                første = første.venstre;
+            }
+            while (første.høyre != null && første.venstre == null) {
+                første = første.høyre;
+            }
+        }
+        return første;
     }
 
     // TODO
@@ -241,8 +268,7 @@ public class EksamenSBinTre<T> {
      * @return Returnerer noden som kommer etter p i postorden
      */
     private static <T> Node<T> nestePostorden(Node<T> p) {
-
-        Node<T> neste = p;      // starter med neste i rotnoden
+        Node<T> neste = p;      // starter med neste
 
         // starter med å sjekke om noden er alene
         if(neste.venstre == null && neste.høyre==null && neste.forelder == null){
@@ -271,7 +297,7 @@ public class EksamenSBinTre<T> {
     // TODO
     /** Oppgave 4 - hjelpemetode del 1
      *
-     * @param oppgave
+     * @param oppgave .
      */
     public void postorden(Oppgave<? super T> oppgave) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
