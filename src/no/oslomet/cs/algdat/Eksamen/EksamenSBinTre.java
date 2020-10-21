@@ -194,29 +194,22 @@ public class EksamenSBinTre<T> {
 
             int cmp = comp.compare(verdi, p.verdi);     // hvis verdi>p.verdi returneres positivt tall
 
-            if(cmp < 0){        //rotnodes verdi er større enn verdien vi leter etter
-                p = p.høyre;
-
-            }
-
-            if(cmp > 0){        // rotnodes verdi er mindre enn verdien vi leter etter
+            if(cmp < 0){        //rotnodes verdi er mindre enn verdien vi leter etter
                 p = p.venstre;
 
             }
 
-            if (cmp == 0) {
-                antallAvVerdi++;
-                p = p.høyre;        // TODO: går til høyre fordi om verdien finnes, er den alltid til venstre?
+            else if(cmp > 0){        //rotnodes verdi er større enn verdien vi leter etter
+                p = p.høyre;
+
             }
 
-
-
+            else {
+                antallAvVerdi++;
+                p = p.høyre;        // går til høyre fordi den kan være lik på høyre side
+            }
 
         }
-
-
-
-
 
         return antallAvVerdi;
     }
