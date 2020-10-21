@@ -229,7 +229,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-    // TODO
+    
     /** Oppgave 3 - del 1
      * @param p rot
      * @param <T> .
@@ -242,6 +242,7 @@ public class EksamenSBinTre<T> {
         if(første.venstre == null && første.høyre==null && første.forelder == null){
             return p;
         }
+        
 
         // fortsetter med å sjekke om foreldren har barn, ellers er forelder neste så lenge den ikke har andre barn
         else if(første.venstre == null && første.høyre == null && første.forelder.høyre == null){
@@ -261,7 +262,6 @@ public class EksamenSBinTre<T> {
         return første;
     }
 
-    // TODO
     /** Oppgave 3 - del 2
      * @param p .
      * @param <T> .
@@ -271,24 +271,35 @@ public class EksamenSBinTre<T> {
         Node<T> neste = p;      // starter med neste
 
         // starter med å sjekke om noden er alene
-        if(neste.venstre == null && neste.høyre==null && neste.forelder == null){
+        if(neste.forelder == null){
             return null;
         }
 
-        // fortsetter med å sjekke om foreldren har barn, ellers er forelder neste så lenge den ikke har andre barn
-        else if(neste.venstre == null && neste.høyre == null && neste.forelder.høyre == null){
-            neste = neste.forelder;
+        // sjekker om forelder har noen barn til høyre som ikke er deg og ikke er null
+        if(neste.forelder.høyre != p && neste.forelder.høyre != null){
+            neste = neste.forelder.høyre;               // hvis startnode er venstre barn går vi altså til høyre barn før forelder
+
+            // her kommer man til bunnen av treet, altså neste node
+            // sjekker om noden har barn og da skal alle til venstre gås gjennom først
+            if(neste.venstre != null || neste.høyre != null) {
+
+                while (neste.venstre != null || neste.høyre != null) {      // loopes så lenge det er barn. Venstre sjekkes først
+
+                    if (neste.venstre != null) {            // noden har venstrebarn
+                        neste = neste.venstre;              // noden settes til venstre
+                    }
+
+                    else {
+                        neste = neste.høyre;
+                    }
+                }
+            }
         }
 
 
-        // sjekker om søsken har barn, og da skal alle til venstre sjekkes først
-        while(neste.venstre != null || neste.høyre != null) {
-            while (neste.venstre != null) {
-                neste = neste.venstre;
-            }
-            while (neste.høyre != null && neste.venstre == null) {
-                neste = neste.høyre;
-            }
+        // hvis venstre og høyre barn er null, går vi til forelder
+        else {
+            neste = neste.forelder;
         }
 
         return neste;

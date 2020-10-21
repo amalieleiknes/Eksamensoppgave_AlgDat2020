@@ -122,7 +122,6 @@ public class EksamenTest {
 
         try {
             s = tre.toStringPostOrder();
-            //System.out.println(s); //TODO: fjernes
             if (!s.equals("[2, 4, 5, 3, 1, 7, 9, 8, 6, 11, 13, 12, 14, 10]")) {
                 antallFeil++;
                 System.out.println("Oppgave 3d: Feil i toStringPostOrder()! Men feilen kan");
@@ -131,7 +130,7 @@ public class EksamenTest {
         } catch (Exception e) {
             antallFeil++;
             System.out.println
-                    ("Oppgave 3e: Her kastes et unntak! Det skal ikke skje!");
+                    ("Oppgave 3e: Her kastes et unntak! Det skal ikke skje!" + e);
         }
 
         // Et nytt tre
