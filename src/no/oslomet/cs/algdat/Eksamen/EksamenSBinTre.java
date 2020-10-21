@@ -229,7 +229,7 @@ public class EksamenSBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-    
+
     /** Oppgave 3 - del 1
      * @param p rot
      * @param <T> .
@@ -311,7 +311,17 @@ public class EksamenSBinTre<T> {
      * @param oppgave .
      */
     public void postorden(Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Node<T> p = rot;
+
+        // finner først den første postorden
+
+
+
+        T førstePostordenVerdi = førstePostorden(p).verdi;
+
+        oppgave.utførOppgave(førstePostordenVerdi);            // utførOppgave tar inn en T verdi
+
+
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {
