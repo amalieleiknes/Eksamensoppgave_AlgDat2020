@@ -115,6 +115,7 @@ public class EksamenSBinTre<T> {
         else q.høyre = p;                        // høyre barn til q
 
         antall++;                                // én verdi mer i treet
+        endringer++;                             // har endret treet
         return true;                             // vellykket innlegging
     }
 
@@ -176,7 +177,6 @@ public class EksamenSBinTre<T> {
     }
 
 
-    // TODO
     /** Oppgave 2
      * @param verdi Verdien vi ska sjekke antall forekomster av
      * @return Returnerer antallet av verdien
@@ -196,23 +196,21 @@ public class EksamenSBinTre<T> {
 
             if(cmp < 0){        //rotnodes verdi er mindre enn verdien vi leter etter
                 p = p.venstre;
-
             }
 
             else if(cmp > 0){        //rotnodes verdi er større enn verdien vi leter etter
                 p = p.høyre;
-
             }
 
             else {
                 antallAvVerdi++;
                 p = p.høyre;        // går til høyre fordi den kan være lik på høyre side
             }
-
         }
 
         return antallAvVerdi;
     }
+
 
     // TODO
     /** Oppgave 6 - del 3
@@ -225,24 +223,49 @@ public class EksamenSBinTre<T> {
 
     // TODO
     /** Oppgave 3 - del 1
-     *
-     * @param p
-     * @param <T>
-     * @return
+     * @param p rot
+     * @param <T> .
+     * @return Returnerer første node i post orden med p som rot
      */
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if(p == null){
+            return null;
+        }
+        return p.venstre;
     }
 
     // TODO
     /** Oppgave 3 - del 2
-     *
-     * @param p
-     * @param <T>
-     * @return
+     * @param p .
+     * @param <T> .
+     * @return Returnerer noden som kommer etter p i postorden
      */
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        Node<T> neste = p;      // starter med neste i rotnoden
+
+        // starter med å sjekke om noden er alene
+        if(neste.venstre == null && neste.høyre==null && neste.forelder == null){
+            return null;
+        }
+
+        // fortsetter med å sjekke om foreldren har barn, ellers er forelder neste så lenge den ikke har andre barn
+        else if(neste.venstre == null && neste.høyre == null && neste.forelder.høyre == null){
+            neste = neste.forelder;
+        }
+
+
+        // sjekker om søsken har barn, og da skal alle til venstre sjekkes først
+        while(neste.venstre != null || neste.høyre != null) {
+            while (neste.venstre != null) {
+                neste = neste.venstre;
+            }
+            while (neste.høyre != null && neste.venstre == null) {
+                neste = neste.høyre;
+            }
+        }
+
+        return neste;
     }
 
     // TODO

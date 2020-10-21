@@ -45,7 +45,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager" selected="JUnit.EksamenTest.oppgave2">
+  <component name="RunManager" selected="JUnit.EksamenTest.oppgave3">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="no.oslomet.cs.algdat.Eksamen.Main" />
       <module name="Eksamensoppgave AlgDat2020" />
@@ -68,21 +68,6 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EksamenTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Eksamensoppgave AlgDat2020" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="no.oslomet.cs.algdat.Eksamen.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="no.oslomet.cs.algdat.Eksamen" />
-      <option name="MAIN_CLASS_NAME" value="no.oslomet.cs.algdat.Eksamen.EksamenTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -119,6 +104,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="EksamenTest.oppgave3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eksamensoppgave AlgDat2020" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="no.oslomet.cs.algdat.Eksamen.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="no.oslomet.cs.algdat.Eksamen" />
+      <option name="MAIN_CLASS_NAME" value="no.oslomet.cs.algdat.Eksamen.EksamenTest" />
+      <option name="METHOD_NAME" value="oppgave3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EksamenTest.oppgave6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Eksamensoppgave AlgDat2020" />
       <extension name="coverage">
@@ -137,11 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EksamenTest.oppgave3" />
         <item itemvalue="JUnit.EksamenTest.oppgave2" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.EksamenTest.oppgave6" />
         <item itemvalue="JUnit.EksamenTest.oppgave1" />
-        <item itemvalue="JUnit.EksamenTest" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +157,7 @@
       <workItem from="1603190849567" duration="398000" />
       <workItem from="1603191325142" duration="116000" />
       <workItem from="1603191840409" duration="11309000" />
-      <workItem from="1603262920698" duration="302000" />
+      <workItem from="1603262920698" duration="4324000" />
     </task>
     <servers />
   </component>
@@ -180,38 +181,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="336" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603191161193" />
-    <state width="1493" height="202" key="GridCell.Tab.0.bottom" timestamp="1603263398003">
+    <state width="723" height="208" key="GridCell.Tab.0.bottom" timestamp="1603264276794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603263398003" />
-    <state width="1493" height="202" key="GridCell.Tab.0.center" timestamp="1603263398002">
+    <state width="723" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603264276794" />
+    <state width="723" height="208" key="GridCell.Tab.0.center" timestamp="1603264276794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603263398002" />
-    <state width="1493" height="202" key="GridCell.Tab.0.left" timestamp="1603263398002">
+    <state width="723" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603264276794" />
+    <state width="723" height="208" key="GridCell.Tab.0.left" timestamp="1603264276794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603263398002" />
-    <state width="1493" height="202" key="GridCell.Tab.0.right" timestamp="1603263398003">
+    <state width="723" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603264276794" />
+    <state width="723" height="208" key="GridCell.Tab.0.right" timestamp="1603264276794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603263398003" />
-    <state width="1493" height="202" key="GridCell.Tab.1.bottom" timestamp="1603263398368">
+    <state width="723" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603264276794" />
+    <state width="1493" height="202" key="GridCell.Tab.1.bottom" timestamp="1603263489005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603263398368" />
-    <state width="1493" height="202" key="GridCell.Tab.1.center" timestamp="1603263398368">
+    <state width="1493" height="202" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603263489005" />
+    <state width="1493" height="202" key="GridCell.Tab.1.center" timestamp="1603263489005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603263398368" />
-    <state width="1493" height="202" key="GridCell.Tab.1.left" timestamp="1603263398368">
+    <state width="1493" height="202" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603263489005" />
+    <state width="1493" height="202" key="GridCell.Tab.1.left" timestamp="1603263489005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603263398368" />
-    <state width="1493" height="202" key="GridCell.Tab.1.right" timestamp="1603263398368">
+    <state width="1493" height="202" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603263489005" />
+    <state width="1493" height="202" key="GridCell.Tab.1.right" timestamp="1603263489005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="202" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603263398368" />
+    <state width="1493" height="202" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603263489005" />
     <state x="882" y="307" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1603190880865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -220,51 +221,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="783" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1603224436429" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>194</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>197</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>202</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>196</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>207</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
-          <line>189</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
