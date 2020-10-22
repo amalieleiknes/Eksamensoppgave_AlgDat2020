@@ -304,23 +304,33 @@ public class EksamenSBinTre<T> {
 
         return neste;
     }
-
-    // TODO
+    
     /** Oppgave 4 - hjelpemetode del 1
-     *
-     * @param oppgave .
+     * @param oppgave tar inn en oppgave
      */
     public void postorden(Oppgave<? super T> oppgave) {
         Node<T> p = rot;
 
         // finner først den første postorden
+        while(p.venstre!=null || p.høyre!=null){
+            if(p.venstre!=null){
+                p = p.venstre;
+            }
+            else {
+                p = p.høyre;
+            }
+        }
+
+        // kaller metoden med den første
+        T verdi = førstePostorden(p).verdi;
+        oppgave.utførOppgave(verdi);            // utførOppgave tar inn en T verdi
 
 
-
-        T førstePostordenVerdi = førstePostorden(p).verdi;
-
-        oppgave.utførOppgave(førstePostordenVerdi);            // utførOppgave tar inn en T verdi
-
+        // deretter bruker vi resten av verdiene
+        while(nestePostorden(p)!=null){
+            p = nestePostorden(p);          // husker på å endre p til nestePostorden
+            oppgave.utførOppgave(p.verdi);  // legger inn p sin verdi som parameter og kaller på utførOppgave
+        }
 
     }
 
