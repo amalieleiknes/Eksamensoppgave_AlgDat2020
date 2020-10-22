@@ -304,7 +304,7 @@ public class EksamenSBinTre<T> {
 
         return neste;
     }
-    
+
     /** Oppgave 4 - hjelpemetode del 1
      * @param oppgave tar inn en oppgave
      */
@@ -340,12 +340,37 @@ public class EksamenSBinTre<T> {
 
     // TODO
     /** Oppgave 4 - hjelpemetode del 2
-     *
-     * @param p
-     * @param oppgave
+     * @param p Tar inn rotnoden først, og deretter neste node i rekken
+     * @param oppgave Tar inn en oppgave som skal kunne utføres
      */
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        // finner først den første postorden
+        //TODO: feilen er at den kommer inn i denne løkka igjen. Skal bare inn her én gang. Stackoverflow
+        // hvordan kan jeg unngå at den ikke går inn her igjen?
+
+        if(nestePostorden(p) == null) {
+            while (p.venstre != null || p.høyre != null) {
+                if (p.venstre != null) {
+                    p = p.venstre;
+                } else {
+                    p = p.høyre;
+                }
+            }
+
+            // kaller metoden med den første
+            T verdi = førstePostorden(p).verdi;
+            oppgave.utførOppgave(verdi);            // utførOppgave tar inn en T verdi
+            postordenRecursive(p, oppgave);
+        }
+
+
+        else {
+            p = nestePostorden(p);
+            postordenRecursive(p, oppgave);
+        }
+
+        //" 2 4 5 3 1 7 9 8 6 11 13 12 14 10");
+
     }
 
     // TODO
