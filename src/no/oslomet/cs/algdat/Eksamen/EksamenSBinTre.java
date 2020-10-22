@@ -345,15 +345,8 @@ public class EksamenSBinTre<T> {
      */
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
 
-        // starter med å sjekke om den er eneste node
-        if(p.venstre == null && p.høyre == null && p.forelder == null){
-            oppgave.utførOppgave(p.verdi);
-        }
-
-        // finner først den første postorden (og passer på at den aldri går inn der igjen)
-
-        else if(p.forelder!= null) {
-
+        if (p==rot) {
+            // finner først den første postorden (og passer på at den aldri går inn der igjen)
             while (p.venstre != null || p.høyre != null) {
                 if (p.venstre != null) {
                     p = p.venstre;
@@ -361,15 +354,17 @@ public class EksamenSBinTre<T> {
                     p = p.høyre;
                 }
             }
-
             // kaller metoden med den første
-            oppgave.utførOppgave(førstePostorden(p).verdi);            // utførOppgave tar inn en T verdi
-            postordenRecursive(p, oppgave);
+            oppgave.utførOppgave(førstePostorden(p).verdi);
         }
 
-        else {
-            p = nestePostorden(p);
+        p = nestePostorden(p);
+        if(p!=rot) {
+            oppgave.utførOppgave(p.verdi);
             postordenRecursive(p, oppgave);
+        }
+        else{
+            oppgave.utførOppgave(rot.verdi);
         }
 
     }        //" 2 4 5 3 1 7 9 8 6 11 13 12 14 10");
