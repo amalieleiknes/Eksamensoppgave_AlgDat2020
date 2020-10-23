@@ -173,15 +173,18 @@ public class EksamenSBinTre<T> {
         antall--;   // det er nå én node mindre i treet
         return true;
     }
-
-    // TODO
+    
     /** Oppgave 6 - del 2
      *
      * @param verdi Tar inn verdi som skal fjernes i alle noder
      * @return Returnerer hvor mange noder som er fjernet
      */
     public int fjernAlle(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        int antallFjernet = 0;
+        while(fjern(verdi)){
+            antall++;
+        }
+        return antallFjernet;
     }
 
 
@@ -226,7 +229,28 @@ public class EksamenSBinTre<T> {
      * sørge for at pekere og nodeverdier blir nullet ut.
      */
     public void nullstill() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Node<T> p = rot;
+
+        if (p==rot) {
+            // finner først den første postorden (og passer på at den aldri går inn der igjen)
+            while (p.venstre != null || p.høyre != null) {
+                if (p.venstre != null) {
+                    p = p.venstre;
+                } else {
+                    p = p.høyre;
+                }
+            }
+
+
+
+
+
+        nullstill();
+
+
+
+
+
     }
 
 
@@ -338,7 +362,6 @@ public class EksamenSBinTre<T> {
         postordenRecursive(rot, oppgave);
     }
 
-    // TODO: stack overflow fordi den starter på nytt igjen
     /** Oppgave 4 - hjelpemetode del 2
      * @param p Tar inn rotnoden først, og deretter neste node i rekken
      * @param oppgave Tar inn en oppgave som skal kunne utføres
@@ -367,7 +390,7 @@ public class EksamenSBinTre<T> {
             oppgave.utførOppgave(rot.verdi);
         }
 
-    }        //" 2 4 5 3 1 7 9 8 6 11 13 12 14 10");
+    }
 
     // TODO
     /** Oppgave 5 - del 1
