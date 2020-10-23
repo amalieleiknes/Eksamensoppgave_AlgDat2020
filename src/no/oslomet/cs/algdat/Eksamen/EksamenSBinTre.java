@@ -171,9 +171,10 @@ public class EksamenSBinTre<T> {
         }
 
         antall--;   // det er nå én node mindre i treet
+        endringer++;
         return true;
     }
-    
+
     /** Oppgave 6 - del 2
      *
      * @param verdi Tar inn verdi som skal fjernes i alle noder
@@ -182,7 +183,8 @@ public class EksamenSBinTre<T> {
     public int fjernAlle(T verdi) {
         int antallFjernet = 0;
         while(fjern(verdi)){
-            antall++;
+            antall--;
+            endringer++;
         }
         return antallFjernet;
     }
@@ -231,25 +233,10 @@ public class EksamenSBinTre<T> {
     public void nullstill() {
         Node<T> p = rot;
 
-        if (p==rot) {
-            // finner først den første postorden (og passer på at den aldri går inn der igjen)
-            while (p.venstre != null || p.høyre != null) {
-                if (p.venstre != null) {
-                    p = p.venstre;
-                } else {
-                    p = p.høyre;
-                }
-            }
+        // traversere gjennom treet rekursivt eller iterativt
 
-
-
-
-
-        nullstill();
-
-
-
-
+        // nullstille alle pekere og verdier til barn
+        
 
     }
 
