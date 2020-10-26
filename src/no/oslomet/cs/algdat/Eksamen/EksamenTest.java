@@ -6,6 +6,7 @@ package no.oslomet.cs.algdat.Eksamen;
 import no.oslomet.cs.algdat.Eksamen.EksamenSBinTre;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
@@ -201,6 +202,7 @@ public class EksamenTest {
         ArrayList<Integer> data = tre.serialize();
 
         Integer[] truth = {10, 6, 14, 1, 8, 12, 3, 7, 9, 11, 13, 2, 5, 4};
+        System.out.println(Arrays.toString(truth));
         assertArrayEquals(data.toArray(), truth);
 
         EksamenSBinTre<Integer> tre2 = EksamenSBinTre.deserialize(data, Comparator.naturalOrder());

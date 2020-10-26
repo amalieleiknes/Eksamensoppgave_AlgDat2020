@@ -382,24 +382,37 @@ public class EksamenSBinTre<T> {
 
     // TODO
     /** Oppgave 5 - del 1
-     * @return Returnerer en serialisert ArrayList
+     * @return Returnerer en serialisert ArrayList (skal være på nivåorden)
      */
     public ArrayList<T> serialize() {
-        ArrayList<T> postOrdenList = new ArrayList<T>();
-        Node<T> p = rot;
+        ArrayList<T> valueList = new ArrayList<T>();
+        ArrayList<Node<T>> nodeList = new ArrayList<Node<T>>();
+        Node<T> midl;
 
-        postOrdenList.add(førstePostorden(p).verdi);
+        // første som skal legges inn er roten i nivåorden
+        valueList.add(rot.verdi);
+        nodeList.add(rot);
 
-        while(nestePostorden(p)!= null){
-            p = nestePostorden(p);
-            assert p != null;
-            postOrdenList.add(p.verdi);
+        // sjekker nivåene nedover (legger til venstre og høyre barn i listen
+        // sjekker neste node i listen om den har barn og legger de til)
+        // går igjen videre til neste i listen og sjekker dens barn
+        for(int i = 0; i < antall; i++) {                   // starter på nivå 1, altså sjekker barna til rot
+            midl = nodeList.get(i);                         // henter noden vi skal sjekke barna til
+
+                if (midl.venstre != null) {
+                    valueList.add(midl.venstre.verdi);      // legger til nodeverdien i valueList
+                    nodeList.add(midl.venstre);             // legger til venstre node i nodeList, har oversikt over noderekkefølgen
+                }
+                if (midl.høyre != null) {
+                    valueList.add(midl.høyre.verdi);
+                    nodeList.add(midl.høyre);
+            }
         }
 
         try {
             FileOutputStream fos = new FileOutputStream("listData");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(postOrdenList);
+            oos.writeObject(valueList);
             oos.close();
             fos.close();
         }
@@ -407,8 +420,7 @@ public class EksamenSBinTre<T> {
             ioe.printStackTrace();
         }
 
-        return postOrdenList;
-
+        return valueList;
     }
 
     // TODO
