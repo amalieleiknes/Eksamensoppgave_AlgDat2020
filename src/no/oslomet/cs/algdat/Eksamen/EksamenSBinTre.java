@@ -1,6 +1,7 @@
 package no.oslomet.cs.algdat.Eksamen;
 
 
+import java.io.*;
 import java.util.*;
 
 public class EksamenSBinTre<T> {
@@ -381,23 +382,64 @@ public class EksamenSBinTre<T> {
 
     // TODO
     /** Oppgave 5 - del 1
-     *
-     * @return
+     * @return Returnerer en serialisert ArrayList
      */
     public ArrayList<T> serialize() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        ArrayList<T> postOrdenList = new ArrayList<T>();
+        Node<T> p = rot;
+
+        postOrdenList.add(førstePostorden(p).verdi);
+
+        while(nestePostorden(p)!= null){
+            p = nestePostorden(p);
+            assert p != null;
+            postOrdenList.add(p.verdi);
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream("listData");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(postOrdenList);
+            oos.close();
+            fos.close();
+        }
+        catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        return postOrdenList;
+
     }
 
     // TODO
     /** Oppgave 5 - del 2
-     *
-     * @param data
-     * @param c
-     * @param <K>
-     * @return
+     * @param data Tar inn arrayListen som skal deserialiseres
+     * @param c Tar inn en parameter som skal sammenligne verdier
+     * @param <K> .
+     * @return Returnerer deserialisert array
      */
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        EksamenSBinTre<K> tre = (EksamenSBinTre<K>) new EksamenSBinTre<>(Comparator.naturalOrder());
+
+        try
+        {
+            FileInputStream fis = new FileInputStream("employeeData");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            data = (ArrayList<K>) ois.readObject();
+
+            ois.close();
+            fis.close();
+        }
+        catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Class not found");
+            e.printStackTrace();
+        }
+
+        return tre;
     }
 
 
