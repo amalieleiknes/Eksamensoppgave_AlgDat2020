@@ -380,7 +380,6 @@ public class EksamenSBinTre<T> {
 
     }
 
-    // TODO
     /** Oppgave 5 - del 1
      * @return Returnerer en serialisert ArrayList (skal være på nivåorden)
      */
@@ -423,7 +422,6 @@ public class EksamenSBinTre<T> {
         return valueList;
     }
 
-    // TODO
     /** Oppgave 5 - del 2
      * @param data Tar inn arrayListen som skal deserialiseres
      * @param c Tar inn en parameter som skal sammenligne verdier
@@ -431,26 +429,26 @@ public class EksamenSBinTre<T> {
      * @return Returnerer deserialisert array
      */
     static <K> EksamenSBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        EksamenSBinTre<K> tre = (EksamenSBinTre<K>) new EksamenSBinTre<>(Comparator.naturalOrder());
+        EksamenSBinTre<K> tre = new EksamenSBinTre<K>(c);
 
-        try
-        {
-            FileInputStream fis = new FileInputStream("employeeData");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-
-            data = (ArrayList<K>) ois.readObject();
-
-            ois.close();
-            fis.close();
+        // hvis tomt array
+        if(data.size() == 0){
+            return null;
         }
-        catch (IOException ioe) {
-            ioe.printStackTrace();
+
+        // lager en rot med første verdi i arrayet og forelder lik null
+        Node<K> rot = new Node<K>(data.get(0), null);
+
+        // prøver å legge inn nodene i treet igjen
+        try {
+            tre.leggInn(rot.verdi);
+            for (int i = 1; i < data.size(); i++){
+                tre.leggInn(data.get(i));
+            }
         }
-        catch (ClassNotFoundException e) {
-            System.out.println("Class not found");
+        catch (Exception e) {
             e.printStackTrace();
         }
-
         return tre;
     }
 
