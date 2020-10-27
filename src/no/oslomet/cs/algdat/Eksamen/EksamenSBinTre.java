@@ -133,10 +133,12 @@ public class EksamenSBinTre<T> {
      * @return Returnerer true om den blir fjernet
      */
     public boolean fjern(T verdi) {
-        if (verdi == null) return false;  // treet har ingen nullverdier
+        if (verdi == null || rot==null) return false;  // treet har ingen nullverdier og man kan ikke fjerne noe i et tomt tre
 
         Node<T> p = rot;
         Node<T> q = null;   // q skal være forelder til p
+        Node<T> pv = rot.venstre;
+        Node<T> ph = rot.høyre;
 
         while (p != null){                              // leter etter verdi til den enten er funnet og ligger i p eller ikke er funnet
             int cmp = comp.compare(verdi,p.verdi);      // sammenligner verdien tatt inn med p sin verdi
@@ -151,10 +153,11 @@ public class EksamenSBinTre<T> {
         // Tilfelle 1: ingen barn
         if (p.venstre == null && p.høyre == null) {
             p.forelder = null;
+            rot = null;
         }
 
         // Tilfelle 2a: nøyaktig ett barn på venstre side
-        if (p.venstre != null && p.høyre == null){          //høyre barn
+        else if (p.venstre != null && p.høyre == null){          //høyre barn
             Node<T> b = p.venstre;                           // barnet settes til b
 
             if (p == rot) {                                 // hvis p(som skal fjernes) er rot, blir barnet rot
@@ -191,15 +194,15 @@ public class EksamenSBinTre<T> {
         }
 
         // Tilfelle 3: noden har to barn
-        // TODO: her skal alle de på venstre side flyttes ett hakk oppover, mens høyre er det samme?
-        //  forelder til første høyre må da endres til sin søsken
         else {
             Node<T> s = p;
             Node<T> r = p.høyre;                // finner neste til høyre
 
-            while (r.venstre != null) {
-                s = r;                          // s er forelder til r
-                r = r.venstre;
+            if(r.venstre!=null) {
+                while (r.venstre != null) {
+                    s = r;                          // s er forelder til r
+                    r = r.venstre;
+                }
             }
 
             p.verdi = r.verdi;                  // kopierer verdien i r til p
@@ -273,24 +276,20 @@ public class EksamenSBinTre<T> {
      */
     public void nullstill() {
         Node<T> p = førstePostorden(rot);
-        T førsteFjernes = p.verdi;
-        fjern(førsteFjernes);
 
-        p = nestePostorden(p);
-
-        while(true){
-            assert p != null;
-            if (!fjern(p.verdi)) break;
-            p = nestePostorden(p);
-            assert p != null;
+        if(p!=null) {
             fjern(p.verdi);
+            p = nestePostorden(p);
+
+            while (p!=null){
+                if (!fjern(p.verdi)) break;
+                p = nestePostorden(p);
+                assert p != null;
+                fjern(p.verdi);
+            }
+
         }
-
-        // traversere gjennom treet rekursivt eller iterativt
-
-        // nullstille alle pekere og verdier til barn
-        
-
+        antall = 0;
     }
 
     /** Oppgave 3 - del 1
@@ -300,6 +299,10 @@ public class EksamenSBinTre<T> {
      */
     private static <T> Node<T> førstePostorden(Node<T> p) {
         Node<T> første = p;      // starter med neste i rotnoden
+
+        if(p==null){
+            return null;
+        }
 
         // starter med å sjekke om noden er alene
         if(første.venstre == null && første.høyre==null && første.forelder == null){
