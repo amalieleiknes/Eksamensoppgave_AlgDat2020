@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1e724aa4-c466-4a6b-aa05-9d46faf904d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Eksamensoppgave AlgDat2020/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Eksamensoppgave AlgDat2020/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenTest.java" afterDir="false" />
     </list>
@@ -61,15 +60,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,7 +160,8 @@
       <workItem from="1603273442123" duration="7944000" />
       <workItem from="1603357800661" duration="10774000" />
       <workItem from="1603379125817" duration="10545000" />
-      <workItem from="1603700507300" duration="10345000" />
+      <workItem from="1603700507300" duration="11184000" />
+      <workItem from="1603806229827" duration="6221000" />
     </task>
     <servers />
   </component>
@@ -191,38 +189,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="336" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603191161193" />
-    <state width="843" height="205" key="GridCell.Tab.0.bottom" timestamp="1603725335217">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom" timestamp="1603810129842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="843" height="205" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603725335217" />
-    <state width="843" height="205" key="GridCell.Tab.0.center" timestamp="1603725335217">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603810129842" />
+    <state width="1493" height="203" key="GridCell.Tab.0.center" timestamp="1603810129841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="843" height="205" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603725335217" />
-    <state width="843" height="205" key="GridCell.Tab.0.left" timestamp="1603725335217">
+    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603810129841" />
+    <state width="1493" height="203" key="GridCell.Tab.0.left" timestamp="1603810129841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="843" height="205" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603725335217" />
-    <state width="843" height="205" key="GridCell.Tab.0.right" timestamp="1603725335217">
+    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603810129841" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right" timestamp="1603810129841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="843" height="205" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603725335217" />
-    <state width="1493" height="164" key="GridCell.Tab.1.bottom" timestamp="1603708869107">
+    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603810129841" />
+    <state width="1493" height="164" key="GridCell.Tab.1.bottom" timestamp="1603808192021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="164" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603708869107" />
-    <state width="1493" height="164" key="GridCell.Tab.1.center" timestamp="1603708869107">
+    <state width="1493" height="164" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603808192021" />
+    <state width="1493" height="164" key="GridCell.Tab.1.center" timestamp="1603808192021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="164" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603708869107" />
-    <state width="1493" height="164" key="GridCell.Tab.1.left" timestamp="1603708869107">
+    <state width="1493" height="164" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1603808192021" />
+    <state width="1493" height="164" key="GridCell.Tab.1.left" timestamp="1603808192021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="164" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603708869107" />
-    <state width="1493" height="164" key="GridCell.Tab.1.right" timestamp="1603708869107">
+    <state width="1493" height="164" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1603808192021" />
+    <state width="1493" height="164" key="GridCell.Tab.1.right" timestamp="1603808192021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="164" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603708869107" />
+    <state width="1493" height="164" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1603808192021" />
     <state x="882" y="307" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1603190880865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -247,6 +245,16 @@
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/no/oslomet/cs/algdat/Eksamen/EksamenSBinTre.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="java-exception" />
