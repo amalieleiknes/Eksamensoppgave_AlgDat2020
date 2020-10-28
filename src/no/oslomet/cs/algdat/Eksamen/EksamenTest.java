@@ -229,7 +229,9 @@ public class EksamenTest {
         }
 
         int[] a = {6, 3, 9, 1, 5, 7, 10, 2, 4, 8, 11, 6, 8};
-        for (int verdi : a) tre.leggInn(verdi);
+        for (int verdi : a) {
+            tre.leggInn(verdi);
+        }
 
         boolean fjernet = tre.fjern(12);
         s = tre.toStringPostOrder();
@@ -239,7 +241,7 @@ public class EksamenTest {
             System.out.println("Oppgave 6b: Feil i fjern(T)! Tallet 12 er ikke i treet!");
         }
 
-        if (fjernet == true) {
+        if (fjernet) {
             antallFeil++;
             System.out.println("Oppgave 6c: Feil i fjern(T)! Skal returnere false når");
             System.out.println("verdien ikke er i treet.");
@@ -251,8 +253,11 @@ public class EksamenTest {
             System.out.println("ikke endres for en mislykket fjerning.");
         }
 
+        System.out.println(tre.toStringPostOrder()); //TODO
+
         fjernet = tre.fjern(2);
         s = tre.toStringPostOrder();
+        System.out.println(tre.toStringPostOrder()); //TODO
 
         if (!s.equals("[1, 4, 5, 3, 6, 8, 8, 7, 11, 10, 9, 6]")) {
             antallFeil++;
