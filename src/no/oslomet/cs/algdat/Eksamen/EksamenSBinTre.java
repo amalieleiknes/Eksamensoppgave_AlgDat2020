@@ -114,91 +114,74 @@ public class EksamenSBinTre<T> {
         return true;                             // vellykket innlegging
     }
 
-    // TODO
     /** Oppgave 6 - del 1
      * Tatt fra kompendiet - korrigert så den fungerer i min kode
      * @param verdi Verdien som skal fjernes
      * @return Returnerer true om den blir fjernet
      */
-    public boolean fjern(T verdi) {
-        if (verdi == null || rot == null) {
-            return false;  // treet har ingen nullverdier og man kan ikke fjerne noe i et tomt tre
-        } else {
-            Node<T> p = rot;
-            Node<T> q = null;   // q skal være forelder til p
+    public boolean fjern(T verdi) {  // hører til klassen SBinTre
+        if (verdi == null || rot == null) return false;  // treet har ingen nullverdier
 
-            while (p != null) {                              // leter etter verdi til den enten er funnet og ligger i p eller ikke er funnet
-                int cmp = comp.compare(verdi, p.verdi);      // sammenligner verdien tatt inn med p sin verdi
-                if (cmp < 0) {
-                    q = p;
-                    p = p.venstre;
-                }      // går til venstre hvis verdien er mindre
-                else if (cmp > 0) {
-                    q = p;
-                    p = p.høyre;
-                }   // går til høyre hvis verdien er større
-                else break;                                 // den søkte verdien ligger i node p
-            }
+        Node<T> p = rot, q = null;   // q skal være forelder til p
 
-            // fant ikke verdi, returnerer false
-            if (p == null) {
-                return false;
-            }
-
-            // hvis kun roten er i treet
-            else if(p == rot && p.venstre == null && p.høyre == null){
-                rot = null;
-            }
-
-            // Tilfelle 1: ingen barn
-            else if (p.venstre == null && p.høyre == null) {
-                p.forelder = null;
-
-            }
-
-            // Tilfelle 2a: nøyaktig ett barn på venstre side
-            else if (p.venstre != null && p.høyre == null) {          //høyre barn
-                Node<T> b = p.venstre;                           // barnet settes til b
-
-                if (p == q.venstre) {
-                    q.venstre = b;
-                } else {      // ellers peker den høyre på barn
-                    q.høyre = b;
-                }
-            }
-
-            // Tilfelle 2b: nøyaktig ett barn på høyre side
-            else if (p.venstre == null) {          // venstre barn
-                Node<T> b = p.høyre;
-
-                assert q != null;
-                if (p == q.venstre) {
-                    q.venstre = b;
-                } else {      // ellers peker den høyre på barn
-                    q.høyre = b;
-                }
-
-            }
-
-            // Tilfelle 3: noden har to barn
-            else {
-                Node<T> s = p, r = p.høyre;   // finner neste i inorden
-                while (r.venstre != null)
-                {
-                    s = r;    // s er forelder til r
-                    r = r.venstre;
-                }
-
-                p.verdi = r.verdi;   // kopierer verdien i r til p
-
-                if (s != p) s.venstre = r.høyre;
-                else s.høyre = r.høyre;
-            }
-
-            antall--;   // det er nå én node mindre i treet
-            endringer++;
-            return true;
+        // leter etter noden og setter den som p
+        while (p != null) {
+            int cmp = comp.compare(verdi,p.verdi);      // sammenligner
+            if (cmp < 0) { q = p; p = p.venstre; }      // går til venstre
+            else if (cmp > 0) { q = p; p = p.høyre; }   // går til høyre
+            else break;    // den søkte verdien ligger i p
         }
+
+        // om verdien ikke finnes i treet er p lik null
+        if (p == null) {
+            return false;   // finner ikke verdi
+        }
+
+
+        if (p.venstre == null || p.høyre == null)  // Tilfelle 1) og 2)
+        {
+            Node<T> b = p.venstre != null ? p.venstre : p.høyre;  // b for barn
+            if (p == rot){
+                rot = b;
+            }
+            else if (p == q.venstre){
+                q.venstre = b;
+                if(b!= null){
+                    b.forelder = q;
+                }
+            }
+            else {
+                q.høyre = b;
+                if(b!= null){
+                    b.forelder = q;
+                }
+            }
+        }
+
+        // Tilfelle 3: to barn
+        else {
+            Node<T> s = p;
+            Node<T> r = p.høyre;   // finner neste node i inorden
+
+            // sålenge
+            while (r.venstre != null) {
+                s = r;              // s er forelder til r
+                r = r.venstre;
+            }
+
+            // kopierer verdien i r til p,
+            p.verdi = r.verdi;
+
+            if (s != p) {
+                s.venstre = r.høyre;
+            }
+            else {
+                s.høyre = r.høyre;
+            }
+        }
+
+        antall--;   // det er nå én node mindre i treet
+        return true;
     }
 
     /** Oppgave 6 - del 2
@@ -208,10 +191,41 @@ public class EksamenSBinTre<T> {
      */
     public int fjernAlle(T verdi) {
         int antallFjernet = 0;
-        while(fjern(verdi)){
-            antall--;
-            endringer++;
-            antallFjernet++;
+
+        if(rot==null || verdi==null || tom()){
+            return antallFjernet;
+        }
+        else {
+            Node<T> p = rot;
+
+            while (p != null) {
+                int cmp = comp.compare(verdi, p.verdi);      // sammenligner
+                if (cmp < 0) {
+                    p.forelder = p;
+                    p = p.venstre;          // går til venstre
+                } else if (cmp > 0) {
+                    p.forelder = p;
+                    p = p.høyre;            // går til høyre
+                } else break;    // den søkte verdien ligger i p
+            }
+
+            if (p == null) {
+                return 0;
+            }
+
+            if (p.venstre == null && p.høyre == null && p.verdi == verdi && p.forelder == null) {
+                rot.forelder = null;
+                rot=null;
+                antall = 0;
+                antallFjernet++;
+            } else {
+                if (p.verdi == verdi) {
+                    while(fjern(verdi)) {
+                        antallFjernet++;
+                        rot.forelder =null;
+                    }
+                }
+            }
         }
         return antallFjernet;
     }
@@ -256,21 +270,15 @@ public class EksamenSBinTre<T> {
      * sørge for at pekere og nodeverdier blir nullet ut.
      */
     public void nullstill() {
-        Node<T> p = førstePostorden(rot);
-
-        if(p!=null) {
+        if(!tom()) {
+            Node<T> p = førstePostorden(rot);
             fjern(p.verdi);
-            p = nestePostorden(p);
 
-            while (p!=null){
-                if (!fjern(p.verdi)) break;
+            while (nestePostorden(p) != null) {
                 p = nestePostorden(p);
-                assert p != null;
-                fjern(p.verdi);
             }
-
+            antall = 0;
         }
-        antall = 0;
     }
 
     /** Oppgave 3 - del 1

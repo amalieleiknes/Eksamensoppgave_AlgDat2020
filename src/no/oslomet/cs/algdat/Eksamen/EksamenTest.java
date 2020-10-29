@@ -1,12 +1,7 @@
 package no.oslomet.cs.algdat.Eksamen;
 
-
 ////// Testprogram for mappeeksamen ////////////////////////
-
-import no.oslomet.cs.algdat.Eksamen.EksamenSBinTre;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
@@ -253,11 +248,9 @@ public class EksamenTest {
             System.out.println("ikke endres for en mislykket fjerning.");
         }
 
-        System.out.println(tre.toStringPostOrder()); //TODO
 
         fjernet = tre.fjern(2);
         s = tre.toStringPostOrder();
-        System.out.println(tre.toStringPostOrder()); //TODO
 
         if (!s.equals("[1, 4, 5, 3, 6, 8, 8, 7, 11, 10, 9, 6]")) {
             antallFeil++;
@@ -403,6 +396,7 @@ public class EksamenTest {
             System.out.println("pekere i treet skal nulles!");
         }
         assertEquals(antallFeil, 0);
+
     }  // slutt på Oppgave 5
 
 
